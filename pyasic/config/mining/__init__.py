@@ -95,6 +95,9 @@ class MiningModeNormal(MinerConfigValue):
     def as_bosminer(self) -> dict:
         return {"autotuning": {"enabled": True}}
 
+    def as_sealminer(self) -> dict:
+        return {"minerMode": "2"}
+
 
 class MiningModeSleep(MinerConfigValue):
     mode: str = field(init=False, default="sleep")
@@ -171,6 +174,9 @@ class MiningModeLPM(MinerConfigValue):
     def as_goldshell(self) -> dict:
         return {"settings": {"level": 1}}
 
+    def as_sealminer(self) -> dict:
+        return {"minerMode": "0"}
+
 
 class MiningModeHPM(MinerConfigValue):
     mode: str = field(init=False, default="high")
@@ -200,6 +206,9 @@ class MiningModeHPM(MinerConfigValue):
 
     def as_auradine(self) -> dict:
         return {"mode": {"mode": "turbo"}}
+
+    def as_sealminer(self) -> dict:
+        return {"minerMode": "3"}
 
 
 class MiningModePowerTune(MinerConfigValue):
@@ -318,6 +327,8 @@ class MiningModePowerTune(MinerConfigValue):
 
     def as_luxos(self) -> dict:
         return {"autotunerset": {"enabled": True}}
+
+    # TODO: sealminer
 
 
 class MiningModeHashrateTune(MinerConfigValue):
@@ -439,6 +450,8 @@ class MiningModeHashrateTune(MinerConfigValue):
 
     def as_luxos(self) -> dict:
         return {"autotunerset": {"enabled": True}}
+
+    # TODO: sealminer
 
 
 class MiningModePreset(MinerConfigValue):
@@ -892,6 +905,20 @@ class MiningModeConfig(MinerConfigOption):
     def as_btminer_v3(self) -> dict:
         """Delegate to the default instance for btminer v3 configuration."""
         return self.default().as_btminer_v3()
+
+    @classmethod
+    def from_sealminer(cls, web_conf: dict) -> MiningModeConfig:
+        if web_conf.get("xk-h3x-miningmode") is not None:
+            work_mode = web_conf["xk-h3x-miningmode"]
+            if work_mode == "":
+                return cls.default()
+            if int(work_mode) == 2:
+                return cls.normal()
+            elif int(work_mode) == 0:
+                return cls.low()
+            elif int(work_mode) == 3:
+                return cls.high()
+        return cls.default()
 
 
 MiningMode = TypeVar(
