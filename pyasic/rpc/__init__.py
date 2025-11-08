@@ -13,6 +13,7 @@
 #  See the License for the specific language governing permissions and         -
 #  limitations under the License.                                              -
 # ------------------------------------------------------------------------------
+from .bdminer import BDMinerRPCAPI
 from .bfgminer import BFGMinerRPCAPI
 from .bmminer import BMMinerRPCAPI
 from .bosminer import BOSMinerRPCAPI
