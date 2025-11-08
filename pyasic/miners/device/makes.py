@@ -72,3 +72,7 @@ class BraiinsMake(BaseMiner):
 
 class ElphapexMake(BaseMiner):
     make = MinerMake.ELPHAPEX
+
+
+class SealminerMake(BaseMiner):
+    make = MinerMake.SEALMINER
