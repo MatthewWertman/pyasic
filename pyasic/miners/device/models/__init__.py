@@ -24,5 +24,6 @@ from .goldshell import *
 from .hammer import *
 from .iceriver import *
 from .innosilicon import *
+from .sealminer import *
 from .volcminer import *
 from .whatsminer import *
