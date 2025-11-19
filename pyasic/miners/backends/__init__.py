@@ -33,6 +33,7 @@ from .luckyminer import LuckyMiner
 from .luxminer import LUXMiner
 from .marathon import MaraMiner
 from .mskminer import MSKMiner
+from .sealminer import SealMiner
 from .unknown import UnknownMiner
 from .vnish import VNish
 from .whatsminer import M2X, M3X, M5X, M6X, M7X
