@@ -576,6 +576,13 @@ class ElphapexModels(MinerModelType):
         return self.value
 
 
+class SealminerModels(MinerModelType):
+    A2 = "A2"
+
+    def __str__(self) -> str:
+        return self.value
+
+
 class MinerModel:
     ANTMINER = AntminerModels
     WHATSMINER = WhatsminerModels
@@ -591,3 +598,4 @@ class MinerModel:
     VOLCMINER = VolcMinerModels
     ELPHAPEX = ElphapexModels
     BRAIINS = BraiinsModels
+    SEALMINER = SealminerModels
