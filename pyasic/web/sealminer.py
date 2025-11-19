@@ -26,8 +26,8 @@ def generate_php_session_id() -> str:
 class SealminerWebAPI(BaseWebAPI):
     def __init__(self, ip: str) -> None:
         super().__init__(ip)
-        self.username: str = "seal"
-        self.pwd: str = settings.get("default_sealminer_web_password", "seal")
+        self.username = "seal"
+        self.pwd = settings.get("default_sealminer_web_password", "seal")
         self.token: str | None = None
 
     async def auth(self) -> str | None:
@@ -124,7 +124,7 @@ class SealminerWebAPI(BaseWebAPI):
         return await self.send_command("mining_setting", data=data)
 
     async def stop_mining(self) -> dict:
-        data = "parama_data:0"
+        data = "{parama_data:0}"
         return await self.send_command("mining_setting", data=data)
 
     async def reboot(self) -> dict:
