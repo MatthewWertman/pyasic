@@ -22,4 +22,5 @@ from .goldshell import GoldshellWebAPI
 from .hammer import HammerWebAPI
 from .iceriver import IceRiverWebAPI
 from .innosilicon import InnosiliconWebAPI
+from .sealminer import SealminerWebAPI
 from .vnish import VNishWebAPI
